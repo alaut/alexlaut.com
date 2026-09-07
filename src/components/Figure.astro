@@ -1,0 +1,52 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  num: string;
+  caption: string;
+}
+const { src, alt, num, caption } = Astro.props;
+---
+<figure class="fig">
+  <div class="fig-media">
+    <img src={src} alt={alt} loading="lazy" />
+  </div>
+  <figcaption>
+    <span class="fig-num">Fig. {num}</span>
+    {caption}
+  </figcaption>
+</figure>
+
+<style>
+  .fig {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .fig-media {
+    border: 1px solid var(--frame);
+    background: var(--surface);
+    padding: 0.5rem;
+  }
+  .fig-media img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+  figcaption {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 42rem;
+  }
+  .fig-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-right: 0.5rem;
+  }
+</style>

@@ -1,0 +1,331 @@
+---
+import Base from '../layouts/Base.astro';
+import Figure from '../components/Figure.astro';
+
+const capabilities = [
+  {
+    title: 'Optics',
+    img: '/images/optics.png',
+    alt: 'Simulated quasi-optical beam propagating through a mirror relay',
+    text: 'Quasi-optical design and THz beam propagation, from corrugated waveguide to free-space mirror relays.',
+  },
+  {
+    title: 'Controls',
+    img: '/images/controls.jpg',
+    alt: 'Rack-mounted control chassis with relay banks and custom wiring',
+    text: 'Instrumentation and machine control — custom chassis, interlocks, and data acquisition built to run real hardware.',
+  },
+  {
+    title: 'Computation',
+    img: '/images/computation.png',
+    alt: 'CAD model of an accelerator cavity with tuning ports',
+    text: 'Electromagnetic and multiphysics simulation, CAD-driven modeling, and numerical tooling in Python.',
+  },
+  {
+    title: 'Research',
+    img: '/images/research.png',
+    alt: 'Optimized coil trajectories forming a spherical winding pattern',
+    text: 'From first-principles beam dynamics to published experiment: design, measurement, and iteration.',
+  },
+];
+
+const links = [
+  { label: 'GitHub', handle: 'alaut', href: 'https://github.com/alaut' },
+  { label: 'LinkedIn', handle: 'in/alaut', href: 'https://linkedin.com/in/alaut' },
+  { label: 'Strava', handle: 'ajlaut', href: 'https://strava.com/athletes/ajlaut' },
+  { label: 'Instagram', handle: 'lautalexander', href: 'https://instagram.com/lautalexander' },
+];
+---
+<Base
+  title="Alex Laut"
+  description="Franco-American engineer and physicist developing fusion-enabling technologies and particle accelerators."
+>
+  <header class="top wrap">
+    <span class="wordmark">Alex Laut</span>
+    <nav aria-label="Sections">
+      <a href="#focus">Focus</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-text">
+        <p class="eyebrow">Engineer &amp; Physicist — Fusion / Accelerators</p>
+        <h1>Building the machines that make fusion possible.</h1>
+        <p class="lede">
+          I'm a Franco-American engineer and physicist developing fusion-enabling
+          technologies and particle accelerators — gyrotrons, THz transmission
+          lines, RF optics, and the beam physics that ties them together.
+        </p>
+        <p class="lede-2">
+          I work hard and take pride in it, but that doesn't keep me inside:
+          aspiring mountaineer, excessive skier, distance runner, adrenaline junkie.
+        </p>
+      </div>
+      <div class="hero-photo">
+        <img src="/images/portrait.jpg" alt="Alex Laut in the high mountains, snowfields and ridgeline behind" />
+        <span class="photo-note">Somewhere above the snow line</span>
+      </div>
+    </section>
+
+    <section id="focus" class="wrap section">
+      <p class="eyebrow">Focus</p>
+      <h2>Two threads, one goal</h2>
+      <div class="focus-grid">
+        <article class="focus-card">
+          <img src="/images/fusion.jpg" alt="Interior of a gyrotron cavity assembly in machined copper" loading="lazy" />
+          <div class="focus-body">
+            <h3>Fusion-Enabling Technologies</h3>
+            <p>Gyrotrons, THz transmission lines, and RF optics — the
+            high-power millimeter-wave systems that heat and drive
+            next-generation fusion devices.</p>
+          </div>
+        </article>
+        <article class="focus-card">
+          <img src="/images/accelerators.jpg" alt="Precision-machined copper vane of a radio-frequency quadrupole" loading="lazy" />
+          <div class="focus-body">
+            <h3>Particle Accelerators</h3>
+            <p>Synchrotrons, RFQs, beam dynamics, and diagnostics — designing,
+            modeling, and measuring the beams themselves.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="capabilities" class="wrap section">
+      <p class="eyebrow">Capabilities</p>
+      <h2>How the work gets done</h2>
+      <div class="cap-grid">
+        {capabilities.map((c) => (
+          <article class="cap-card">
+            <img src={c.img} alt={c.alt} loading="lazy" />
+            <h3>{c.title}</h3>
+            <p>{c.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="work" class="wrap section">
+      <p class="eyebrow">In practice</p>
+      <h2>From simulation to hardware</h2>
+      <div class="fig-grid">
+        <Figure
+          src="/images/mode-converter.png"
+          alt="Simulated field cross-section of a gyrotron internal mode converter"
+          num="01"
+          caption="Simulated cross-section of a gyrotron internal mode converter, optimized with phase-correcting mirrors to produce a purely Gaussian output beam."
+        />
+        <Figure
+          src="/images/planar-magnetics.jpg"
+          alt="Planar shim coil printed circuit boards mounted on aluminum plates"
+          num="02"
+          caption="Planar magnetics for electromagnetic shimming — unwanted field gradients are cancelled to achieve high field homogeneity in a compact, inexpensive package."
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="wrap">
+    <p class="eyebrow">Elsewhere</p>
+    <ul class="links">
+      {links.map((l) => (
+        <li>
+          <a href={l.href} rel="me noopener">
+            <span class="link-label">{l.label}</span>
+            <span class="link-handle">{l.handle}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="colophon">© {new Date().getFullYear()} Alex Laut</p>
+  </footer>
+</Base>
+
+<style>
+  .top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.125rem;
+    letter-spacing: -0.01em;
+  }
+  .top nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .top nav a {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    text-decoration: none;
+    color: var(--ink-2);
+  }
+  .top nav a:hover { color: var(--copper); }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+  }
+  .hero-text { display: flex; flex-direction: column; gap: 1.25rem; }
+  h1 {
+    font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+    font-weight: 700;
+  }
+  .lede {
+    font-size: 1.1875rem;
+    max-width: 34em;
+    margin: 0;
+  }
+  .lede-2 {
+    margin: 0;
+    max-width: 34em;
+    color: var(--ink-2);
+    font-style: italic;
+  }
+  .hero-photo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .hero-photo img {
+    border: 1px solid var(--frame);
+    padding: 0.5rem;
+    background: var(--surface);
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    width: 100%;
+  }
+  .photo-note {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-2);
+    letter-spacing: 0.06em;
+  }
+
+  .section {
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .section h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.25rem, 3vw, 2rem);
+  }
+  .focus-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+  }
+  .focus-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  .focus-body {
+    padding: 1.25rem 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-top: 2px solid var(--copper);
+  }
+  .focus-body h3 { font-size: 1.25rem; font-weight: 600; }
+  .focus-body p { margin: 0; color: var(--ink-2); font-size: 1rem; }
+
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+  }
+  .cap-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .cap-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid var(--frame);
+    background: var(--surface);
+  }
+  .cap-card h3 { font-size: 1.0625rem; font-weight: 600; }
+  .cap-card p { margin: 0; font-size: 0.9375rem; color: var(--ink-2); }
+
+  .fig-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3.5vw, 2.5rem);
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-block: 2.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2.25rem;
+  }
+  .links a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  .link-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--ink);
+  }
+  .link-handle {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--copper);
+  }
+  .links a:hover .link-label { color: var(--copper); }
+  .colophon {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-2);
+  }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-photo { max-width: 24rem; }
+    .cap-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .focus-grid, .fig-grid, .cap-grid { grid-template-columns: 1fr; }
+  }
+</style>
