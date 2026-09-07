@@ -14,5 +14,6 @@ node_modules/
 Thumbs.db
 
 # legacy Google Sites export (kept locally for reference)
-Alex Laut.html
-Alex Laut_files/
+Alex Laut*.html
+Alex Laut*_files/
+_to_delete_works/
